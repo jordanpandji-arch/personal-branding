@@ -1,0 +1,629 @@
+/* branding-premium/style.css */
+
+:root {
+    /* Palette Obsidienne & Or Bruni */
+    --c-black: #020308;
+    --c-dark: #0a0b14;
+    --c-surface: #121420;
+    --c-silver: #e2e8f0;
+    --c-silver-muted: #94a3b8;
+    --c-amber: #d97706;
+    --c-amber-glow: rgba(217, 119, 6, 0.15);
+    --c-accent-gradient: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+    --c-silver-gradient: linear-gradient(135deg, #f8fafc 0%, #cbd5e1 100%);
+    
+    /* Variables de Design */
+    --container-max: 1400px;
+    --transition-slow: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-fast: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --glass: rgba(18, 20, 32, 0.7);
+    --border-glass: rgba(255, 255, 255, 0.05);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--c-black);
+    color: var(--c-silver);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Texture de grain */
+.grain-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Ffilter id='noiseFilter'%3E%3FfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3F/filter%3E%3Frect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3F/svg%3E");
+    opacity: 0.03;
+}
+
+.container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 4rem;
+}
+
+.title-serif {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+    background: linear-gradient(to bottom, rgba(2, 3, 8, 0.8), transparent);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 4rem;
+}
+
+.brand-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.brand-logo span {
+    color: var(--c-amber);
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 3rem;
+    align-items: center;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--c-silver-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: var(--transition-fast);
+}
+
+.main-nav a:hover {
+    color: var(--c-amber);
+}
+
+.nav-cta {
+    padding: 0.8rem 1.8rem;
+    border: 1px solid var(--c-amber);
+    color: var(--c-amber) !important;
+    border-radius: 2px;
+}
+
+.nav-cta:hover {
+    background: var(--c-amber);
+    color: var(--c-black) !important;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.hero-bg-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.glow-sphere {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(150px);
+}
+
+.glow-sphere.amber {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--c-amber-glow), transparent);
+    top: -10%;
+    right: -10%;
+}
+
+.glow-sphere.silver {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(226, 232, 240, 0.05), transparent);
+    bottom: 5%;
+    left: 10%;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.hero-tagline {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: var(--c-amber);
+    margin-bottom: 1.5rem;
+}
+
+.hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(4rem, 8vw, 7rem);
+    line-height: 0.9;
+    margin-bottom: 2rem;
+    letter-spacing: -4px;
+}
+
+.hero-name span {
+    color: var(--c-amber);
+}
+
+.hero-roles {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--c-silver-muted);
+    margin-bottom: 2.5rem;
+}
+
+.dot {
+    width: 4px;
+    height: 4px;
+    background: var(--c-amber);
+    border-radius: 50%;
+}
+
+.hero-desc {
+    font-size: 1.2rem;
+    max-width: 500px;
+    color: var(--c-silver-muted);
+    margin-bottom: 3.5rem;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 2rem;
+}
+
+.btn {
+    padding: 1.2rem 2.8rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.btn-main {
+    background: var(--c-amber);
+    color: var(--c-black);
+}
+
+.btn-main:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(217, 119, 6, 0.2);
+}
+
+.btn-ghost {
+    border: 1px solid var(--border-glass);
+    color: var(--c-silver);
+}
+
+.btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Portrait Artistique */
+.hero-portrait-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.portrait-wrapper {
+    position: relative;
+    width: 450px;
+    height: 600px;
+}
+
+.main-portrait {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(40%) contrast(110%) sepia(10%);
+    -webkit-filter: grayscale(40%) contrast(110%) sepia(10%);
+    position: relative;
+    z-index: 10;
+    transition: var(--transition-slow);
+}
+
+.portrait-wrapper:hover .main-portrait {
+    filter: grayscale(0%) contrast(100%) sepia(0%);
+    -webkit-filter: grayscale(0%) contrast(100%) sepia(0%);
+    transform: scale(1.03);
+}
+
+.portrait-art-bg {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: calc(100% + 40px);
+    height: calc(100% + 40px);
+    background: var(--c-surface);
+    z-index: 1;
+}
+
+.portrait-frame {
+    position: absolute;
+    top: 40px;
+    right: -40px;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--c-amber);
+    z-index: 3;
+    pointer-events: none;
+}
+
+.abstract-shape {
+    position: absolute;
+    z-index: 4;
+}
+
+.abstract-shape.s1 {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--c-accent-gradient);
+    top: 10%;
+    left: -40px;
+    filter: blur(20px);
+    opacity: 0.4;
+}
+
+.abstract-shape.s2 {
+    width: 120px;
+    height: 2px;
+    background: var(--c-silver);
+    bottom: 20%;
+    right: -80px;
+}
+
+/* About Section */
+.about {
+    padding: 150px 0;
+    background: var(--c-dark);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 4rem;
+}
+
+.section-label {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--c-amber);
+    padding-top: 1rem;
+}
+
+.about-text h2 {
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 3rem;
+    max-width: 800px;
+}
+
+.about-text p {
+    font-size: 1.4rem;
+    color: var(--c-silver-muted);
+    max-width: 700px;
+    margin-bottom: 2rem;
+}
+
+.quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--c-amber);
+    margin-top: 4rem;
+    font-style: italic;
+}
+
+/* Expertise Section */
+.expertise {
+    padding: 150px 0;
+}
+
+.section-header {
+    margin-bottom: 5rem;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    margin-top: 1rem;
+}
+
+.expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.exp-card {
+    background: var(--c-surface);
+    padding: 4rem 3rem;
+    border: 1px solid var(--border-glass);
+    transition: var(--transition-slow);
+}
+
+.exp-card:hover {
+    transform: translateY(-15px);
+    border-color: var(--c-amber);
+}
+
+.exp-card.highlight {
+    background: linear-gradient(to bottom right, var(--c-surface), var(--c-black));
+    border-color: rgba(217, 119, 6, 0.3);
+}
+
+.exp-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 2.5rem;
+    position: relative;
+}
+
+/* Icônes CSS Pur */
+.icon-ai::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--c-amber);
+    transform: rotate(45deg);
+}
+
+.icon-phil::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--c-silver) 20%, transparent 100%);
+}
+
+.icon-ent::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: var(--c-amber);
+    top: 50%;
+}
+.icon-ent::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background: var(--c-amber);
+    left: 50%;
+}
+
+.exp-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.exp-card p {
+    color: var(--c-silver-muted);
+}
+
+/* Works Section */
+.works {
+    padding: 150px 0;
+    background: var(--c-dark);
+}
+
+.works-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 3rem;
+}
+
+.work-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.work-img-placeholder {
+    width: 100%;
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(100%);
+    transition: var(--transition-slow);
+}
+
+.work-item:hover .work-img-placeholder {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+}
+
+.work-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 3rem;
+    background: linear-gradient(to top, rgba(2, 3, 8, 0.9), transparent);
+    transform: translateY(20px);
+    opacity: 0;
+    transition: var(--transition-slow);
+}
+
+.work-item:hover .work-info {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.work-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Contact Section */
+.contact {
+    padding: 150px 0;
+    text-align: center;
+}
+
+.contact-box {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-box h2 {
+    font-size: 5rem;
+    line-height: 1;
+    margin-bottom: 3rem;
+}
+
+.contact-link {
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--c-amber);
+    text-decoration: none;
+    display: block;
+    margin-bottom: 5rem;
+    transition: var(--transition-fast);
+}
+
+.contact-link:hover {
+    letter-spacing: 2px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+}
+
+.social-links a {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--c-silver-muted);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.social-links a:hover {
+    color: var(--c-silver);
+}
+
+/* Footer */
+.footer {
+    padding: 50px 0;
+    border-top: 1px solid var(--border-glass);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--c-silver-muted);
+}
+
+/* Animations CSS */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(60px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    opacity: 1; /* Forcer la visibilité */
+    animation: fadeInUp 1.2s var(--transition-slow) forwards;
+}
+
+.fade-in-up {
+    opacity: 1; /* Forcer visibilité pour diagnostic */
+}
+
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+.delay-4 { animation-delay: 0.8s; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .container { padding: 0 2rem; }
+    .hero-grid { grid-template-columns: 1fr; text-align: center; }
+    .hero-content { order: 2; }
+    .hero-portrait-container { order: 1; justify-content: center; }
+    .hero-name { font-size: 4rem; }
+    .hero-roles { justify-content: center; }
+    .hero-desc { margin-left: auto; margin-right: auto; }
+    .hero-actions { justify-content: center; }
+    .about-grid { grid-template-columns: 1fr; }
+    .expertise-grid { grid-template-columns: 1fr; }
+    .works-grid { grid-template-columns: 1fr; }
+    .contact-box h2 { font-size: 3rem; }
+    .contact-link { font-size: 1.5rem; }
+    .social-links { flex-direction: column; gap: 2rem; }
+}
